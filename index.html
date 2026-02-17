@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FilmyFly Pro</title>>
+    <meta name="google-site-verification" content="onYNPfjHiJBoHIVTNpnb7unrD0UCYspWZXPLt87p73U" />
+    
+    <title>FilmyFly Pro</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -438,49 +440,4 @@
 
         window.toggleFav = function() {
             const idx = favs.indexOf(currentId);
-            if(idx === -1) { favs.push(currentId); showToast("Added to Watchlist"); }
-            else { favs.splice(idx, 1); showToast("Removed"); }
-            
-            localStorage.setItem('filmy_favs', JSON.stringify(favs));
-            updateFavUI(); renderFavs();
-        }
-
-        function updateFavUI() {
-            const btn = document.getElementById('btn-fav');
-            if(favs.includes(currentId)) btn.classList.add('active');
-            else btn.classList.remove('active');
-        }
-
-        function renderFavs() {
-            const g = document.getElementById('fav-grid');
-            document.getElementById('fav-count').innerText = favs.length;
-            
-            if(favs.length === 0) { g.innerHTML = "<p style='color:#666; width:100%; text-align:center;'>Empty.</p>"; return; }
-            if(allMovies.length === 0 && window.db) { setTimeout(renderFavs, 500); return; }
-
-            g.innerHTML = "";
-            favs.forEach(fid => {
-                const m = allMovies.find(x => x.id === fid);
-                if(m) g.innerHTML += makeCard(m, fid);
-            });
-        }
-
-        // 5. UTILS
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.innerText = msg; t.style.opacity = 1; t.style.bottom = "100px";
-            setTimeout(() => { t.style.opacity = 0; t.style.bottom = "30px"; }, 2000);
-        }
-
-        window.switchTab = function(tab, el) {
-            document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
-            document.getElementById('tab-' + tab).classList.add('active');
-            
-            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
-            if(el) el.classList.add('active');
-            else document.querySelectorAll('.nav-item')[4].classList.add('active'); // Profile fallback
-            window.scrollTo(0,0);
-        }
-    </script>
-</body>
-</html>
+            if(idx === -1) { favs.push(currentId); showToas
